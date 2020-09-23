@@ -13,7 +13,9 @@
     "contentimg": "gulp contentImg",
     "svg": "gulp svg",
     "favicon": "gulp favicon",
-    "ie": "gulp ieTest"
+    "ie": "gulp ieTest",
+    "deploy": "npm run build && gh-pages -d build",
+    "gh-pages-help": "gh-pages --help"
   },
   "browserslist": [
     "last 3 version",
@@ -27,11 +29,13 @@
     "babel-loader": "^8.1.0",
     "browser-sync": "^2.26.12",
     "del": "^5.1.0",
+    "gh-pages": "^3.1.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-csso": "^4.0.1",
     "gulp-favicons": "^2.4.0",
     "gulp-file-include": "^2.2.2",
+    "gulp-group-css-media-queries": "^1.2.2",
     "gulp-htmlmin": "^5.0.1",
     "gulp-imagemin": "^7.1.0",
     "gulp-notify": "^3.2.0",

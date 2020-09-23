@@ -5,7 +5,11 @@
   top: 0;
   left: 0;
 
+  width: 100%;
+
   background-color: $color-accent-1;
+
+  z-index: 5;
 
   &::after {
     content: '';
@@ -44,6 +48,8 @@
     position: fixed;
     top: 25px;
     right: 25px;
+
+    z-index: 10;
     @media #{$tablet} {
       display: none;
     }

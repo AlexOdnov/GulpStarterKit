@@ -6,11 +6,11 @@
   bottom: 0;
   left: 0;
 
-  width: 100%;
+  width: 100vw;
 
   background-color: $bg-color-base;
   color: $font-color-base;
-  z-index: 2;
+  z-index: 4;
   transform: translateY(-100%);
 
   @media #{$tablet} {

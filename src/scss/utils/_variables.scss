@@ -3,6 +3,7 @@ $color-dark-1: #000;
 $color-accent-1: #230597;
 
 $font-color-base: $color-dark-1;
+$font-color-light: $color-light-1;
 $font-color-title: $color-dark-1;
 $font-color-link: $color-dark-1;
 $font-color-link--hover: rgba($color-dark-1, 0.6);
@@ -12,6 +13,7 @@ $font-color-btn--hover: $color-light-1;
 $font-color-btn--active: rgba($color-light-1, 0.3);
 
 $bg-color-base: $color-light-1;
+$bg-color-dark: $color-dark-1;
 $bg-color-btn: $color-light-1;
 $bg-color-btn--hover: $color-dark-1;
 $bg-color-btn--active: $color-dark-1;
@@ -75,5 +77,5 @@ $d-laptop: (
   max-width: $bp-des,
 );
 
-// $base-gradient: ;
-// $alt-gradient: ;
+// $gradient-base: ;
+// $gradient-alt: ;
