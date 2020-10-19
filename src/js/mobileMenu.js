@@ -1,43 +1,96 @@
-import scrollToggler from './scrollToggler';
+import scrollToggler from "./scrollToggler";
+import focusController from "./focusController";
 
-const mobileMenu = (
-  menuSelector = 'navigation',
-  btnSelector = 'mobile-menu-toggler',
-  menuContainer = 'header'
-) => {
-  const menu = document.querySelector(`.${menuSelector}`);
-  const btn = document.querySelector(`.${btnSelector}`);
-  const paddingOffset = window.innerWidth - document.body.offsetWidth + 'px';
+export class MobileMenu {
+  constructor(settings = {}) {
+    this.settings = Object.assign(
+      {
+        menuContainerSelector: ".header",
+        menuSelector: ".navigation",
+        btnSelector: ".mobile-menu-toggler",
+        breakpoint: "768",
+      },
+      settings
+    );
+    this.menuContainer = document.querySelector(
+      this.settings.menuContainerSelector
+    );
+    this.menu = document.querySelector(this.settings.menuSelector);
+    this.btn = document.querySelector(this.settings.btnSelector);
+    this.isMenuOpen = false;
+    this.breakpoint = this.settings.breakpoint;
+    this.init();
+  }
 
-  const toggleMenu = () => {
-    menu.style.transition = 'all 0.3s ease 0s';
-    menu.classList.toggle('active');
-    btn.classList.toggle('active');
-    scrollToggler(menu);
-    setTimeout(() => {
-      menu.style.transition = '';
-    }, 350);
-  };
+  init() {
+    this.btn.addEventListener(
+      "click",
+      function (e) {
+        if (this.isMenuOpen) {
+          this.menuClose(e);
+        } else {
+          this.menuOpen(e);
+        }
+      }.bind(this)
+    );
 
-  btn.addEventListener('click', (e) => {
+    window.addEventListener(
+      "click",
+      function (e) {
+        if (this.isMenuOpen && !this.menuContainer.contains(e.target)) {
+          this.menuClose(e);
+        }
+      }.bind(this)
+    );
+
+    window.addEventListener(
+      "keydown",
+      function (e) {
+        if (this.isMenuOpen && e.code === "Escape") {
+          this.menuClose(e);
+          return;
+        }
+        if (this.isMenuOpen && e.code === "Tab") {
+          focusController(e, this.menuContainer);
+          return;
+        }
+      }.bind(this)
+    );
+
+    window.addEventListener(
+      "resize",
+      function (e) {
+        if (this.isMenuOpen && window.innerWidth > this.breakpoint) {
+          this.menuClose(e);
+        }
+      }.bind(this)
+    );
+  }
+
+  menuOpen(e) {
     e.preventDefault();
-    toggleMenu();
-  });
 
-  window.addEventListener('click', (e) => {
-    if (
-      menu.classList.contains('active') &&
-      !e.target.closest(`.${menuContainer}`)
-    ) {
-      toggleMenu();
-    }
-  });
+    this.isMenuOpen = true;
+    this.menu.style.transition = "all 0.3s ease 0s";
+    this.menu.classList.add("active");
+    this.btn.classList.add("active");
+    scrollToggler(this.menu);
+    setTimeout(() => {
+      this.menu.style.transition = "";
+    }, 350);
+  }
 
-  window.addEventListener('keydown', (e) => {
-    if (menu.classList.contains('active') && e.code === 'Escape') {
-      toggleMenu();
-    }
-  });
-};
+  menuClose(e) {
+    e.preventDefault();
 
-export default mobileMenu;
+    this.isMenuOpen = false;
+    this.menu.style.transition = "all 0.3s ease 0s";
+    this.menu.classList.remove("active");
+    this.btn.classList.remove("active");
+    scrollToggler(this.menu);
+    setTimeout(() => {
+      this.menu.style.transition = "";
+    }, 350);
+    this.btn.focus();
+  }
+}

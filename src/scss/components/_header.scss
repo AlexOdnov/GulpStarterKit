@@ -4,18 +4,18 @@
   position: sticky;
   top: 0;
   left: 0;
+  z-index: 5;
 
   width: 100%;
 
   background-color: $color-accent-1;
 
-  z-index: 5;
-
   &::after {
-    content: '';
+    content: "";
 
     position: absolute;
     top: 0;
+    z-index: 5;
 
     display: block;
     width: 100vw;
@@ -23,7 +23,6 @@
 
     background-color: $color-accent-1;
 
-    z-index: 5;
     @media #{$tablet} {
       display: none;
     }
@@ -50,6 +49,7 @@
     right: 25px;
 
     z-index: 10;
+
     @media #{$tablet} {
       display: none;
     }

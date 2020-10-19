@@ -1,4 +1,5 @@
 node_modules
 build
 debug.log
+.vscode
 *.txt

@@ -1,22 +1,26 @@
-const scrollToTop = () => {
-  const windowHeight = document.documentElement.clientHeight;
-  const scrollButton = document.querySelector('.scroll-to-top');
+export class ScrollToTop {
+  constructor(button = '.scroll-to-top') {
+    this.windowHeight = document.documentElement.clientHeight;
+    this.scrollButton = document.querySelector(button);
+    this.init();
+  }
 
-  window.addEventListener('scroll', (e) => {
-    if (window.pageYOffset > windowHeight) {
-      scrollButton.classList.add('active');
-    } else {
-      scrollButton.classList.remove('active');
-    }
-  });
+  init() {
+    window.addEventListener('scroll', this.toggleBtnVisibility.bind(this));
 
-  scrollButton.addEventListener('click', (e) => {
-    e.preventDefault;
-    window.scroll({
-      top: 0,
-      behavior: 'smooth',
+    this.scrollButton.addEventListener('click', (e) => {
+      e.preventDefault;
+
+      window.scroll({
+        top: 0,
+        behavior: 'smooth',
+      });
     });
-  });
-};
+  }
 
-export default scrollToTop;
+  toggleBtnVisibility() {
+    window.pageYOffset > this.windowHeight
+      ? this.scrollButton.classList.add('active')
+      : this.scrollButton.classList.remove('active');
+  }
+}
