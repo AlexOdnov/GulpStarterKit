@@ -1,12 +1,12 @@
-import scrollToggler from "./scrollToggler";
-import focusController from "./focusController";
+import scrollToggler from './scrollToggler';
+import focusController from './focusController';
 
 export class Modal {
   constructor(modalName, closeBtn = false) {
     this.modalOpener = document.querySelectorAll(`.${modalName}-opener`);
     this.modal = document.querySelector(`.modal-${modalName}`);
     if (closeBtn) {
-      this.closeBtn = this.modal.querySelector(".modal-close");
+      this.closeBtn = this.modal.querySelector('.modal-close');
     }
     this.isModalOpen = false;
     this.init();
@@ -17,15 +17,15 @@ export class Modal {
   static currentOpener = null;
 
   static createOverlay() {
-    Modal.overlay = document.createElement("div");
-    Modal.overlay.classList.add("modal-overlay");
+    Modal.overlay = document.createElement('div');
+    Modal.overlay.classList.add('modal-overlay');
     document.body.append(Modal.overlay);
   }
 
   init() {
     this.modalOpener.forEach((element) => {
       element.addEventListener(
-        "click",
+        'click',
         function (e) {
           if (!this.isModalOpen) {
             this.modalOpen(e);
@@ -39,7 +39,7 @@ export class Modal {
     }
 
     Modal.overlay.addEventListener(
-      "click",
+      'click',
       function (e) {
         if (this.isModalOpen) {
           this.modalClose(e);
@@ -48,13 +48,13 @@ export class Modal {
     );
 
     window.addEventListener(
-      "keydown",
+      'keydown',
       function (e) {
-        if (this.isModalOpen && e.code === "Escape") {
+        if (this.isModalOpen && e.code === 'Escape') {
           this.modalClose(e);
           return;
         }
-        if (this.isModalOpen && e.code === "Tab") {
+        if (this.isModalOpen && e.code === 'Tab') {
           focusController(e, this.modal);
           return;
         }
@@ -63,7 +63,7 @@ export class Modal {
 
     if (this.closeBtn) {
       this.closeBtn.addEventListener(
-        "click",
+        'click',
         function (e) {
           if (this.isModalOpen) {
             this.modalClose(e);
@@ -84,8 +84,8 @@ export class Modal {
     Modal.openedModal = this;
     Modal.currentOpener = e.target;
 
-    this.modal.classList.add("active");
-    Modal.overlay.classList.add("active");
+    this.modal.classList.add('active');
+    Modal.overlay.classList.add('active');
     this.isModalOpen = true;
     scrollToggler(this.modal);
   }
@@ -95,15 +95,15 @@ export class Modal {
 
     const transitionDuration = this.getTransitionDuration(this.modal);
 
-    this.modal.classList.remove("active");
-    Modal.overlay.classList.remove("active");
+    this.modal.classList.remove('active');
+    Modal.overlay.classList.remove('active');
     this.isModalOpen = false;
     scrollToggler(this.modal);
     this.modal.style.left = `calc(50% + ${
-      (window.innerWidth - document.body.offsetWidth) / 2 + "px"
+      (window.innerWidth - document.body.offsetWidth) / 2 + 'px'
     })`;
     setTimeout(() => {
-      this.modal.style.left = "";
+      this.modal.style.left = '';
     }, transitionDuration);
 
     Modal.currentOpener.focus();
@@ -112,10 +112,10 @@ export class Modal {
   }
 
   modalSwitch() {
-    Modal.openedModal.modal.classList.remove("active");
+    Modal.openedModal.modal.classList.remove('active');
     Modal.openedModal.isModalOpen = false;
 
-    this.modal.classList.add("active");
+    this.modal.classList.add('active');
     this.isModalOpen = true;
 
     Modal.openedModal = this;
@@ -127,6 +127,6 @@ export class Modal {
       .sort((a, b) => b - a)
       .slice(0, 1)
       .map((el) => +el * 1000)
-      .join("");
+      .join('');
   }
 }

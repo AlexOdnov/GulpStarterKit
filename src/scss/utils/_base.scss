@@ -7,6 +7,10 @@ html {
   background-color: $bg-color-base;
 }
 
+main {
+  overflow-x: hidden;
+}
+
 .container {
   max-width: $container-width;
   margin: 0 auto;
@@ -19,8 +23,8 @@ html {
 }
 
 .visually-hidden:not(:focus):not(:active),
-input[type="checkbox"].visually-hidden,
-input[type="radio"].visually-hidden {
+input[type='checkbox'].visually-hidden,
+input[type='radio'].visually-hidden {
   position: absolute;
 
   width: 1px;

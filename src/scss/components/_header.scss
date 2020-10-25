@@ -11,7 +11,7 @@
   background-color: $color-accent-1;
 
   &::after {
-    content: "";
+    content: '';
 
     position: absolute;
     top: 0;
@@ -30,6 +30,7 @@
 
   &__container {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     width: 100%;
     height: $header-height;
@@ -44,10 +45,6 @@
   }
 
   &__mmt {
-    position: fixed;
-    top: 25px;
-    right: 25px;
-
     z-index: 10;
 
     @media #{$tablet} {

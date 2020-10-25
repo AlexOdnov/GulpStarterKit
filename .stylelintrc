@@ -70,11 +70,15 @@
       },
       {
         "type": "rule",
-        "selector": "&\\..+"
+        "selector": "&__.+"
       },
       {
         "type": "rule",
         "selector": "&--.+"
+      },
+      {
+        "type": "rule",
+        "selector": "&\\..+"
       },
       {
         "type": "rule",
@@ -102,7 +106,6 @@
         "column-width",
         "column-count",
         "column-fill",
-        "column-gap",
         "column-rule",
         "column-rule-style",
         "column-rule-width",
@@ -141,18 +144,21 @@
         "grid-auto-flow",
         "grid-auto-rows",
         "grid-column",
-        "grid-column-end",
-        "grid-column-gap",
         "grid-column-start",
-        "grid-gap",
+        "grid-column-end",
         "grid-row",
-        "grid-row-end",
-        "grid-row-gap",
         "grid-row-start",
+        "grid-row-end",
         "grid-template",
         "grid-template-areas",
         "grid-template-columns",
         "grid-template-rows",
+        "grid-gap",
+        "gap",
+        "grid-column-gap",
+        "grid-row-gap",
+        "column-gap",
+        "row-gap",
         "box-sizing",
         "box-decoration-break",
         "width",
@@ -325,6 +331,7 @@
         "offset-anchor",
         "offset-rotate",
         "background",
+        "background-color",
         "background-image",
         "background-position",
         "background-position-x",
@@ -336,7 +343,6 @@
         "background-origin",
         "background-clip",
         "background-attachment",
-        "background-color",
         "background-blend-mode",
         "image-orientation",
         "image-rendering",
@@ -548,7 +554,6 @@
     "declaration-block-semicolon-space-before": "never",
     "declaration-block-single-line-max-declarations": 0,
     "declaration-block-trailing-semicolon": "always",
-    "declaration-colon-newline-after": "always-multi-line",
     "declaration-colon-space-after": "always-single-line",
     "declaration-colon-space-before": "never",
     "declaration-empty-line-before": [
@@ -589,7 +594,7 @@
     "function-parentheses-newline-inside": "always-multi-line",
     "function-parentheses-space-inside": "never-single-line",
     "function-url-no-scheme-relative": true,
-    "function-url-quotes": "always",
+    "function-url-quotes": "never",
     "function-url-scheme-blacklist": null,
     "function-url-scheme-whitelist": null,
     "function-whitelist": null,
@@ -690,7 +695,7 @@
     "selector-type-no-unknown": true,
     "shorthand-property-no-redundant-values": true,
     "string-no-newline": true,
-    "string-quotes": "double",
+    "string-quotes": "single",
     "time-min-milliseconds": 10,
     "unit-disallowed-list": [
       "ch",

@@ -16,7 +16,7 @@
 
   &::before,
   &::after {
-    content: "";
+    content: '';
 
     position: absolute;
 
@@ -38,17 +38,6 @@
     bottom: $mmt-size * 0.15;
   }
 
-  &__element {
-    display: block;
-    width: 100%;
-    height: $mmt-size * 0.1;
-
-    background-color: $mmt-color;
-    border-radius: $mmt-size * 0.05;
-
-    transition: all 0.3s ease 0s;
-  }
-
   &:hover,
   &:focus,
   &:active {
@@ -60,6 +49,17 @@
     .mobile-menu-toggler__element {
       background-color: #fff;
     }
+  }
+
+  &__element {
+    display: block;
+    width: 100%;
+    height: $mmt-size * 0.1;
+
+    background-color: $mmt-color;
+    border-radius: $mmt-size * 0.05;
+
+    transition: all 0.3s ease 0s;
   }
 
   &.active {
