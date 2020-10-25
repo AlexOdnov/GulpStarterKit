@@ -1,5 +1,5 @@
 //base style settings
-//sanitize import by postcss
+@import './utils/normalize';
 @import './utils/variables';
 @import './utils/mixin';
 @import './utils/base';

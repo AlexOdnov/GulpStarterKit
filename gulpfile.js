@@ -9,10 +9,9 @@ const htmlmin = require('gulp-htmlmin');
 const sassglob = require('gulp-sass-glob');
 const sass = require('gulp-sass');
 const postcss = require('gulp-postcss');
-const postcssNormalize = require('postcss-normalize');
 const postcssWebp = require('webp-in-css/plugin');
 const postcssAutoprefixer = require('autoprefixer');
-const postcssSortMQ = require('postcss-sort-media-queries');
+const postcssMQpack = require('css-mqpacker');
 const postcssCsso = require('postcss-csso');
 const imagemin = require('gulp-imagemin');
 const webp = require('gulp-webp');
@@ -110,13 +109,10 @@ const css = () => {
     .pipe(replace(/\.\.\/\.\.\//g, '../'))
     .pipe(
       postcss([
-        postcssNormalize({
-          forceImport: 'sanitize/*',
-        }),
         postcssWebp(),
         postcssAutoprefixer(),
-        postcssSortMQ(),
         postcssCsso(),
+        postcssMQpack(),
       ])
     )
     .pipe(
