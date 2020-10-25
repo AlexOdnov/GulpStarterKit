@@ -39,15 +39,14 @@
   }
 
   &:hover,
-  &:focus,
-  &:active {
+  &:focus {
     &::before,
     &::after {
-      background-color: #fff;
+      background-color: lighten($mmt-color, 30%);
     }
 
     .mobile-menu-toggler__element {
-      background-color: #fff;
+      background-color: lighten($mmt-color, 30%);
     }
   }
 

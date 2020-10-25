@@ -8,9 +8,12 @@ const fileinclude = require('gulp-file-include');
 const htmlmin = require('gulp-htmlmin');
 const sassglob = require('gulp-sass-glob');
 const sass = require('gulp-sass');
-const autoprefixer = require('gulp-autoprefixer');
-const gcmq = require('gulp-group-css-media-queries');
-const csso = require('gulp-csso');
+const postcss = require('gulp-postcss');
+const postcssNormalize = require('postcss-normalize');
+const postcssWebp = require('webp-in-css/plugin');
+const postcssAutoprefixer = require('autoprefixer');
+const postcssSortMQ = require('postcss-sort-media-queries');
+const postcssCsso = require('postcss-csso');
 const imagemin = require('gulp-imagemin');
 const webp = require('gulp-webp');
 const favicon = require('gulp-favicons');
@@ -105,16 +108,16 @@ const css = () => {
       )
     )
     .pipe(replace(/\.\.\/\.\.\//g, '../'))
-    .pipe(gcmq())
     .pipe(
-      autoprefixer({
-        cascade: false,
-      })
-    )
-    .pipe(
-      csso({
-        forceMediaMerge: false,
-      })
+      postcss([
+        postcssNormalize({
+          forceImport: 'sanitize/*',
+        }),
+        postcssWebp(),
+        postcssAutoprefixer(),
+        postcssSortMQ(),
+        postcssCsso(),
+      ])
     )
     .pipe(
       rename({
@@ -134,11 +137,13 @@ const bgImg = () => {
           progressive: true,
         }),
         imagemin.optipng({
-          optimizationLevel: 3,
+          optimizationLevel: 2,
         }),
         imagemin.svgo(),
       ])
     )
+    .pipe(dest(path.project.bgImg))
+    .pipe(webp({ quality: 100 }))
     .pipe(dest(path.project.bgImg))
     .pipe(browserSync.stream());
 };
@@ -152,13 +157,13 @@ const contentImg = () => {
           progressive: true,
         }),
         imagemin.optipng({
-          optimizationLevel: 3,
+          optimizationLevel: 2,
         }),
         imagemin.svgo(),
       ])
     )
     .pipe(dest(path.project.contentImg))
-    .pipe(webp())
+    .pipe(webp({ quality: 100 }))
     .pipe(dest(path.project.contentImg))
     .pipe(browserSync.stream());
 };
