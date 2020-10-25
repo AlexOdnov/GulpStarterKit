@@ -7,40 +7,6 @@ html {
   background-color: $bg-color-base;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  overflow-x: hidden;
-  line-height: 1.5;
-  text-rendering: optimizeSpeed;
-
-  //mobile viewport bug fix
-  /* stylelint-disable */
-  min-height: -webkit-fill-available;
-  /* stylelint-enable */
-}
-
-main {
-  flex-grow: 1;
-  overflow-x: hidden;
-}
-
-a {
-  color: inherit;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-button {
-  cursor: pointer;
-}
-
 .container {
   max-width: $container-width;
   margin: 0 auto;
