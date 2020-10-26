@@ -139,7 +139,7 @@ const bgImg = () => {
       ])
     )
     .pipe(dest(path.project.bgImg))
-    .pipe(webp({ quality: 100 }))
+    .pipe(webp({ quality: 95 }))
     .pipe(dest(path.project.bgImg))
     .pipe(browserSync.stream());
 };
@@ -159,7 +159,7 @@ const contentImg = () => {
       ])
     )
     .pipe(dest(path.project.contentImg))
-    .pipe(webp({ quality: 100 }))
+    .pipe(webp({ quality: 95 }))
     .pipe(dest(path.project.contentImg))
     .pipe(browserSync.stream());
 };
